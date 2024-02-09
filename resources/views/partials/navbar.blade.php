@@ -13,9 +13,6 @@
                     <a class="nav-link" href="/posts">Posts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tambah-post">Tambah Post</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li>
             </ul>

@@ -9,8 +9,4 @@ class DashboardController extends Controller
     public function index(){
         return view('pages.dashboard');
     }
-
-    public function addPost(){
-        return view('pages.posts.tambah');
-    }
 }

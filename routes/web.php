@@ -20,5 +20,4 @@ Route::get('/', function () {
 });
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::get('/tambah-post', [DashboardController::class, 'addPost']);
 Route::resource('/posts', PostController::class);
