@@ -20,4 +20,5 @@ Route::get('/', function () {
 });
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::resource('/posts', PostController::class);
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);

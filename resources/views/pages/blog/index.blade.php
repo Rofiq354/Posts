@@ -19,11 +19,11 @@
                         <img src="{{ asset('storage/' . $p->image) }}" class="card-img-top" alt="...">
 
                         {{-- edit --}}
-                        <a href="posts/{{ $p->id }}/edit" class="edit-btn btn btn-light position-absolute rounded-pill" style="filter:opacity(50%); top: 5px; right: 5px;" data-id="{{ $p->id }}" data-title="{{ $p->title }}" data-image="{{ $p->image }}" data-description="{{ $p->description }}"><i class="bi bi-vector-pen"></i></a>
+                        <a href="posts/{{ $p->id }}/edit" class="edit-btn btn btn-light position-absolute rounded-pill" style="filter:opacity(50%); top: 5px; right: 5px;" data-id="{{ $p->id }}" data-title="{{ $p->title }}" data-image="{{ $p->image }}" data-excerpt="{{ $p->excerpt }}"><i class="bi bi-vector-pen"></i></a>
 
                         <div class="card-body">
-                            <h5 class="card-title">{{ $p->title }}</h5>
-                            <p class="card-text">{{ $p->description }}</p>
+                            <h5 class="card-title"><a href="/posts/{{ $p->slug }}">{{ $p->title }}</a></h5>
+                            <p class="card-text">{{ $p->excerpt }}</p>
                         </div>
                         <div class="card-footer">
                             <form action="/posts/{{ $p->id }}" method="POST">

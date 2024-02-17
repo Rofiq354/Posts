@@ -9,6 +9,6 @@ class Post extends Model
 {
     use HasFactory;
 
-    public $table = 'posts';
-    public $guarded = ['id'];
+    // public $table = 'posts';
+    protected $guarded = ['id'];
 }

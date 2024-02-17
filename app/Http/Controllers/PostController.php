@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('pages.posts.index', compact('posts'));
+        return view('pages.blog.index', compact('posts'));
     }
 
     /**
@@ -56,7 +56,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('pages.blog.post', [
+            'title' => 'Single Post',
+            'post' => $post
+        ]);
     }
 
     /**
