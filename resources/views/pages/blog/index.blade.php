@@ -14,7 +14,7 @@
         <div class="row row-cols-1 row-cols-lg-5 g-3 my-3">
             @foreach ($posts as $p)
                 <div class="col">
-                    <div class="card">
+                    <div class="card" style="height: 100%;">
                         {{-- @dd($p->image) --}}
                         <img src="{{ asset('storage/' . $p->image) }}" class="card-img-top" alt="...">
 
@@ -22,7 +22,8 @@
                         <a href="posts/{{ $p->id }}/edit" class="edit-btn btn btn-light position-absolute rounded-pill" style="filter:opacity(50%); top: 5px; right: 5px;" data-id="{{ $p->id }}" data-title="{{ $p->title }}" data-image="{{ $p->image }}" data-excerpt="{{ $p->excerpt }}"><i class="bi bi-vector-pen"></i></a>
 
                         <div class="card-body">
-                            <h5 class="card-title"><a href="/posts/{{ $p->slug }}">{{ $p->title }}</a></h5>
+                            <h5 class="card-title"><a class="text-decoration-none" href="/posts/{{ $p->slug }}">{{ $p->title }}</a></h5>
+                            <p>By. <a href="/authors/{{ $p->author->id }}" class="text-decoration-none text-danger">{{ $p->author->name }}</a> in <a class="text-decoration-none text-danger" href="/categories/{{ $p->category->slug }}">{{ $p->category->name }}</a></p>
                             <p class="card-text">{{ $p->excerpt }}</p>
                         </div>
                         <div class="card-footer">
