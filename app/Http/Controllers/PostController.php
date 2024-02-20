@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,7 +18,11 @@ class PostController extends Controller
     {
         // $posts = Post::all();
         $posts = Post::latest()->get();
-        return view('pages.blog.index', compact('posts'));
+        $authore = User::with('posts')->get();
+        return view('pages.blog.index', compact('posts', 'authore'), [
+            'title' => 'Post All',
+            'active' => 'posts',
+        ]);
     }
 
     /**
@@ -59,6 +64,7 @@ class PostController extends Controller
     {
         return view('pages.post.post', [
             'title' => 'Single Post',
+            'active' => 'posts',
             'post' => $post
         ]);
     }
