@@ -20,6 +20,7 @@
         <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-3 my-3">
             
             @if ($posts->count())
+                {{-- Heading Blog --}}
                 <div class="col-lg-12 col-sm-12 col-md-12">
                     <div class="card text-center" style="height: 100%;">
                         <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="...">
@@ -44,6 +45,7 @@
                         </div> --}}
                     </div>
                 </div>
+
                 @foreach ($posts->skip(1) as $p)
                     <div class="col">
                         <div class="card" style="height: 100%;">
