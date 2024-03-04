@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="content">
-        <h1>Dahsboard</h1>
+        <h1>Halaman Utama</h1>
     </div>
 @endsection
 
