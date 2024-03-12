@@ -26,7 +26,7 @@
         <div class="container my-3">
           <div class="content" style="margin: 0 200px; padding: 50px 200px;">
             <h2 class="text-center">Register</h2>
-            <form action="/register" method="POST">
+            <form action="/register/akun" action="post">
                 @csrf
                 <div class="mb-3">
                   <label for="name" class="form-label">Nama</label>

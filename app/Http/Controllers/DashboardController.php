@@ -11,7 +11,4 @@ class DashboardController extends Controller
             'active' => 'home'
         ]);
     }
-    public function dashboard(){
-        return view('pages.home');
-    }
 }

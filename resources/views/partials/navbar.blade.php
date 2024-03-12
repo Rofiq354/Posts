@@ -20,30 +20,11 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-                @auth
-                    <!-- Example single danger button -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Welcome back, {{ auth()->user()->name }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end">
-                          <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> Profile</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li>
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i> Logout</button>
-                            </form>
-                          </li>
-                        </ul>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a href="/login" class="nav-link {{ ($active === 'login') ? 'active' : '' }}">
-                            <i class="bi bi-box-arrow-in-right"></i> Login
-                        </a>
-                    </li>
-                @endauth
+                <li class="nav-item">
+                    <a href="/login" class="nav-link {{ ($active === 'login') ? 'active' : '' }}">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
