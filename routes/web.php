@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+    return view('pages.dashboard', [
+        'active' => 'home'
+    ]);
 });
-
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'showUser']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/categories', function(){
@@ -61,6 +61,16 @@ Route::get('/authors/{author}', function(User $author){
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
-Route::get('/register/akun', [RegisterController::class, 'store']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('/dashboard', function(){ return view('admin.dashboard.index'); })->middleware('auth');
+Route::resource('/dashboard/posts', PostController::class);
+Route::get('/post', [PostController::class, 'showAuthor']);
+Route::get('/post/{post:slug}', [PostController::class, 'showPost']);
+Route::delete('/post/{post:slug}', [PostController::class, 'showPost']);

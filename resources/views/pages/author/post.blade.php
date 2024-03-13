@@ -7,15 +7,6 @@
 
 @section('content')
     <div class="content">
-        <div class="d-flex align-items-center justify-content-between">
-            <h1>{{ $title }}</h1>
-        </div>
-
-        {{-- <a href="/posts">all</a> --}}
-    
-        {{-- @foreach ($authore as $a)
-            <a href="/authors/{{ $a->id }}" class="text-decoration-none text-danger">{{ $a->name }}</a>
-        @endforeach --}}
         <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-3 my-3">
             
             @if ($posts->count())
@@ -25,12 +16,12 @@
                         <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="...">
     
                         <div class="card-body">
-                            <h5 class="card-title"><a class="text-decoration-none text-dark" href="/posts/{{ $posts[0]->slug }}">{{ $posts[0]->title }}</a></h5>
-                            <p>By. <a href="/authors/{{ $posts[0]->author->id }}" class="text-decoration-none text-danger">{{ $posts[0]->author->name }}</a> in <a class="text-decoration-none text-danger" href="/categories/{{ $posts[0]->category->slug }}">{{ $posts[0]->category->name }}</a> <span class="text-secondary">{{ $posts[0]->created_at->diffForHumans() }}</span></p>
+                            <h5 class="card-title"><a class="text-decoration-none text-dark" href="/post/{{ $posts[0]->slug }}">{{ $posts[0]->title }}</a></h5>
+                            <p><span class="text-secondary">{{ $posts[0]->created_at->diffForHumans() }}</span></p>
                             <p class="card-text">{{ $posts[0]->excerpt }}</p>
                         </div>
                         <div class="mt-2 mb-4">
-                            <a href="/posts/{{ $posts[0]->slug }}" class="btn btn-primary">Read more</a>
+                            <a href="/post/{{ $posts[0]->slug }}" class="btn btn-primary">Read more</a>
                         </div>
                         {{-- <div class="card-footer">
                         </div> --}}
@@ -44,12 +35,12 @@
                             <img src="https://source.unsplash.com/500x400?{{ $p->category->name }}" class="card-img-top" alt="...">
 
                             <div class="card-body">
-                                <h5 class="card-title"><a class="text-decoration-none text-dark" href="/posts/{{ $p->slug }}">{{ $p->title }}</a></h5>
-                                <p>By. <a href="/authors/{{ $p->author->id }}" class="text-decoration-none text-danger">{{ $p->author->name }}</a> <span class="text-secondary">{{ $p->created_at->diffForHumans() }}</span></p>
+                                <h5 class="card-title"><a class="text-decoration-none text-dark" href="/post/{{ $p->slug }}">{{ $p->title }}</a></h5>
+                                <p><span class="text-secondary">{{ $p->created_at->diffForHumans() }}</span></p>
                                 <p class="card-text">{{ $p->excerpt }}</p>
                             </div>
                             <div class="mt-2 mb-4 px-3">
-                                <a href="/posts/{{ $p->slug }}" class="btn btn-primary">Read more</a>
+                                <a href="/post/{{ $p->slug }}" class="btn btn-primary">Read more</a>
                                 
                             </div>
                             {{-- <div class="card-footer">

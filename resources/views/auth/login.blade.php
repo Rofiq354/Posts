@@ -23,9 +23,9 @@
     {{-- @include('partials.navbar') --}}
     
     <div class="container-fluid">
-        <div class="container my-3">
-          <div class="content" style="margin: 0 200px; padding: 50px 200px;">
-
+        <div class="container mx-auto my-5 px-5 row justify-content-center">
+          <div class="content bg-light rounded p-5 col-lg-5 col-md-8">
+            {{-- Register Success --}}
             @if (session()->has('success'))
               <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <i class="bi bi-check-circle"></i>&nbsp;
@@ -33,23 +33,31 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             @endif
-            
+             {{-- Login Failed --}}
+            @if (session()->has('loginError'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-x-circle"></i>&nbsp;
+                {{ session('loginError') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            @endif
             <h2 class="text-center">Login</h2>
-            <form>
+            <form action="/login" method="POST">
+              @csrf
                 <div class="mb-3">
-                  <label for="name" class="form-label">Username</label>
-                  <input type="email" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-                  {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" name="email">
+                  @error('email')  
+                    <div id="emailHelp" class="form-text text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password">
+                  <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                  @error('password')  
+                    <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1" name="password">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary ms-auto d-block">Submit</button>
+                <button type="submit" class="btn btn-primary ms-auto d-block">Masuk</button>
                 <div class="mb-3">
                     <p class="text-center">Tidak punya akun? <small><a href="/register">Register</a></small></p>
                 </div>

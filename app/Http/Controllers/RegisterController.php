@@ -9,9 +9,8 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register.index', [
+        return view('auth.register', [
             'title' => 'Register',
-            'active' => 'register'
         ]);
     }
 
@@ -20,12 +19,12 @@ class RegisterController extends Controller
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'username' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255'
         ]);
 
         User::create($validateData);
 
-        return redirect('login')->with('success', 'Data berhasil tersimpan, Tolong login');
+        return redirect('auth.login')->with('success', 'Data berhasil tersimpan, Tolong login');
     }
 }

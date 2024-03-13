@@ -23,10 +23,10 @@
     {{-- @include('partials.navbar') --}}
     
     <div class="container-fluid">
-        <div class="container my-3">
-          <div class="content" style="margin: 0 200px; padding: 50px 200px;">
+        <div class="container mx-auto my-5 px-5 row justify-content-center">
+          <div class="content bg-light rounded p-5 col-lg-5 col-md-8">
             <h2 class="text-center">Register</h2>
-            <form action="/register/akun" action="post">
+            <form action="/register" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="name" class="form-label">Nama</label>
@@ -60,7 +60,7 @@
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div> --}}
-                <button type="submit" class="btn btn-primary ms-auto d-block">Submit</button>
+                <button type="submit" class="btn btn-primary ms-auto d-block">Daftar</button>
                 <div class="mb-3">
                     <p class="text-center">Sudah punya akun? <small><a href="/login">Login</a></small></p>
                 </div>
@@ -68,10 +68,6 @@
           </div>
         </div>
     </div>
-
-    <p>sesat</p>
-    <p>sesat</p>
-    <p>sesat</p>
 
 
     {{-- Script Bootstrapt 5 --}}

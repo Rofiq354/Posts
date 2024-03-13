@@ -14,8 +14,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function showUser(){
         // $posts = Post::all();
         $posts = Post::latest()->get();
         $authore = User::with('posts')->get();
@@ -24,13 +23,27 @@ class PostController extends Controller
             'active' => 'posts',
         ]);
     }
+    public function showAuthor(){
+        return view('pages.author.post', [
+            'posts' => Post::where('user_id', auth()->user()->id)->get(),
+            'active' => 'post',
+        ]);
+    }
+
+    
+    public function index()
+    {
+        return view('admin.posts.index', [
+            'posts' => Post::where('user_id', auth()->user()->id)->get()
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('pages.posts.tambah');
+        return view('admin.posts.tambah');
     }
 
     /**
@@ -54,7 +67,7 @@ class PostController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect('posts')->with('success','Post created successfully.');
+        return redirect('dashboard/posts')->with('success','Post created successfully.');
     }
 
     /**
@@ -68,13 +81,21 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+    public function showPost(Post $post)
+    {
+        return view('pages.post.post_author', [
+            'title' => 'Single Post',
+            'active' => 'post',
+            'post' => $post
+        ]);
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
     {
-        return view('pages.posts.edit', [
+        return view('admin.posts.edit', [
             'post' => $post,
         ]);
     }
@@ -100,13 +121,9 @@ class PostController extends Controller
             $image_path = $request->image->storeAs('foto', $file_name);
             $post->image = $image_path;
         }
-
-        // Update data lainnya
-        $post->title = $request->title;
-        $post->description = $request->description;
         $post->save();
 
-        return redirect('posts')->with('success','Post updated successfully.');
+        return redirect('dashboard/posts')->with('success','Post updated successfully.');
 }
 
 
@@ -121,6 +138,6 @@ class PostController extends Controller
 
         Post::destroy($post->id);
 
-        return redirect('/posts')->with('success','Post deleted successfully');
+        return redirect()->back()->with('success','Post deleted successfully');
     }
 }
