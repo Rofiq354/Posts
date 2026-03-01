@@ -5,26 +5,17 @@
 [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
+[![Blade](https://img.shields.io/badge/Blade-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](.)
 
-**Project belajar Laravel — blog sederhana dengan sistem autentikasi admin dan tampilan publik postingan.**
+**Project belajar Laravel — blog sederhana dengan autentikasi admin, manajemen post beserta gambar, dan tampilan publik lengkap dengan filter kategori.**
 
 [🔗 Lihat Repo](https://github.com/Rofiq354/Posts)
 
 </div>
 
----
-
-## 📸 Preview
-
-|            🖥️ Desktop             |            📱 Mobile            |
-| :-------------------------------: | :-----------------------------: |
-| ![Desktop](./preview-desktop.png) | ![Mobile](./preview-mobile.png) |
-
----
-
 ## ✨ Tentang Project
 
-Posts adalah project pembelajaran Laravel yang mengikuti materi dari **Web Programming UNPAS**. Aplikasi ini adalah blog sederhana dengan dua sisi: **sisi publik** untuk pengunjung melihat postingan, dan **sisi admin** yang hanya bisa diakses setelah login.
+Posts adalah project pembelajaran Laravel yang mengikuti materi dari **Web Programming UNPAS**. Fokus utama project ini adalah mempelajari cara **upload, update, dan delete gambar** di Laravel, dikombinasikan dengan sistem autentikasi admin dan tampilan blog publik yang lengkap.
 
 > ⚠️ **Work in Progress** — Fitur create & update post di sisi admin masih dalam tahap pengembangan.
 
@@ -32,29 +23,31 @@ Posts adalah project pembelajaran Laravel yang mengikuti materi dari **Web Progr
 
 ## 🛠️ Tech Stack
 
-| Teknologi                                                                                       | Fungsi                            |
-| ----------------------------------------------------------------------------------------------- | --------------------------------- |
-| ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | Backend framework (MVC)           |
-| ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)             | Server-side language              |
-| ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)       | Database                          |
-| ![Blade](https://img.shields.io/badge/Blade-FF2D20?style=flat&logo=laravel&logoColor=white)     | Template engine                   |
-| **Laravel Auth**                                                                                | Sistem autentikasi bawaan Laravel |
+| Teknologi | Fungsi |
+|-----------|--------|
+| ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) | Backend framework (MVC) |
+| ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white) | Server-side language |
+| ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white) | Database |
+| ![Blade](https://img.shields.io/badge/Blade-FF2D20?style=flat&logo=laravel&logoColor=white) | Template engine |
+| **Laravel Auth** | Sistem autentikasi & middleware |
+| **Laravel Storage** | Manajemen file & gambar |
 
 ---
 
 ## 📋 Fitur
 
 **🌐 Publik (Guest)**
-
 - Melihat semua postingan
 - Filter postingan berdasarkan kategori
-- Melihat detail postingan
+- Melihat detail postingan beserta gambar
 
 **🔐 Admin (Setelah Login)**
-
 - Login ke dashboard admin
 - Melihat daftar postingan di panel admin
-- Create & update post _(work in progress)_
+- Upload gambar saat membuat post
+- Update gambar pada post yang sudah ada
+- Hapus gambar & post
+- Create & update post *(work in progress)*
 
 ---
 
@@ -80,12 +73,14 @@ DB_DATABASE=posts
 DB_USERNAME=root
 DB_PASSWORD=
 
-# 5. Jalankan migrasi & seeder
+# 5. Buat symlink untuk storage
+php artisan storage:link
+
+# 6. Jalankan migrasi & seeder
 php artisan migrate --seed
 
-# 6. Jalankan server
+# 7. Jalankan server
 php artisan serve
-npm run dev
 ```
 
 Buka browser dan akses `http://localhost:8000`
@@ -96,9 +91,12 @@ Buka browser dan akses `http://localhost:8000`
 
 Project ini adalah bagian dari perjalanan belajar Laravel bersama **Web Programming UNPAS**, mencakup:
 
+- **Upload Image** — menyimpan file gambar ke Laravel Storage
+- **Update Image** — mengganti gambar lama dengan yang baru, menghapus file lama otomatis
+- **Delete Image** — menghapus file dari storage saat post dihapus
+- **Laravel Storage & Symlink** — `storage:link` untuk mengakses file publik
 - **Laravel Authentication** — sistem login & proteksi route dengan middleware
-- **Route & Middleware** — membedakan akses publik dan admin
-- **Eloquent Relationship** — relasi antar model (Post & Category)
+- **Eloquent Relationship** — relasi antar model Post & Category
 - **Blade Templating** — layout, component, dan conditional rendering
 - **Query & Filter** — menampilkan data berdasarkan kategori
 
@@ -106,8 +104,8 @@ Project ini adalah bagian dari perjalanan belajar Laravel bersama **Web Programm
 
 <div align="center">
 
-_Bagian dari perjalanan belajar Laravel bersama Web Programming UNPAS 📚_
+*Bagian dari perjalanan belajar Laravel bersama Web Programming UNPAS 📚*
 
-\*by **Ainur Rofiq\***
+*by **Ainur Rofiq***
 
 </div>
